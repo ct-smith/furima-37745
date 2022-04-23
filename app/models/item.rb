@@ -7,7 +7,6 @@ class Item < ApplicationRecord
   belongs_to :payer
   belongs_to :user
   has_one_attached :image
- 
 
   with_options presence: true do
     validates :image
@@ -16,7 +15,7 @@ class Item < ApplicationRecord
     validates :price
   end
 
-  with_options numericality: { other_than: 1, message: "can't be blank"} do 
+  with_options numericality: { other_than: 1, message: "can't be blank" } do
     validates :category_id
     validates :payer_id
     validates :prefecture_id
@@ -25,10 +24,10 @@ class Item < ApplicationRecord
   end
 
   validates :price,
-  numericality:
-  { only_integer: true, message: 'is invalid. Input half-width characters', greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999, message: 'is out of setting range', allow_blank: true }
-  #validates :price,
-  #numericality:
-  #{ only_integer: true, message: 'is invalid. Input half-width characters', allow_blank: true }
-
+            numericality:
+            { only_integer: true, message: 'is invalid. Input half-width characters', greater_than_or_equal_to: 300,
+              less_than_or_equal_to: 9_999_999, message: 'is out of setting range', allow_blank: true }
+  # validates :price,
+  # numericality:
+  # { only_integer: true, message: 'is invalid. Input half-width characters', allow_blank: true }
 end
